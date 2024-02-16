@@ -24,7 +24,7 @@ void insertion_sort_list(listint_t **list)
 			tmp = (int *)&current->next->n;
 			*tmp = current->n;
 			current = current->prev;
-			print_list((const listint_t *)*list);
+			print_list(*list);
 		}
 		if (current == NULL)
 		{
