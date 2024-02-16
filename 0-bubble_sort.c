@@ -34,8 +34,8 @@ void bubble_sort(int *array, size_t size)
 			{
 				swap(&array[second], &array[second + 1]);
 				swapped = true;
+				print_array(array, size);
 			}
-			print_array(array, size);
 		}
 		if (swapped == false)
 			break;
