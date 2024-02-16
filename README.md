@@ -1,0 +1,1 @@
+this folder contains the searching and sorting algorithm project, i.e Big O notation. at the end of this project, i should know the various searching and sorting algorithm and thereby know which algorithm is best efficient and fast when sorting large data.
