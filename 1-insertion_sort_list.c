@@ -1,41 +1,45 @@
 #include "sort.h"
+
 /**
- * insertion_sort_list - thiS is an insertion sorting algorithm
- * @list: this is pointer to a pointer to listint_t structure
- * Return: void
-*/
+ * insertion_sort_list - Sorts a doubly linked list
+ *  of integers in ascending order
+ * using the Insertion sort algorithm.
+ *
+ * @list: A pointer to a pointer to listint_t structure
+ */
 void insertion_sort_list(listint_t **list)
 {
-
-	listint_t *ptr, *current;
-	int next_num, *tmp, *hold;
+	listint_t *current, *next_node, *temp;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	ptr = (*list)->next;
+	current = (*list)->next;
 
-	while (ptr)
+	while (current)
 	{
-		next_num = ptr->n;
-		current = ptr->prev;
-		while (current && (current->n > next_num))
+		next_node = current->next;
+
+		while (current->prev && current->prev->n > current->n)
 		{
-			tmp = (int *)&current->next->n;
-			*tmp = current->n;
-			current = current->prev;
+			temp = current->prev;
+			current->prev = temp->prev;
+			temp->next = current->next;
+
+			if (temp->prev)
+				temp->prev->next = current;
+			else
+				*list = current;
+
+			current->next = temp;
+			temp->prev = current;
+
+			if (temp->next)
+				temp->next->prev = temp;
+
 			print_list(*list);
 		}
-		if (current == NULL)
-		{
-			hold = (int *)&(*list)->n;
-			*hold = next_num;
-		}
-		else
-		{
-			hold = (int *)&current->next->n;
-			*hold = next_num;
-		}
-		ptr = ptr->next;
+
+		current = next_node;
 	}
 }
