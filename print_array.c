@@ -21,18 +21,3 @@ void print_array(const int *array, size_t size)
 	}
 	printf("\n");
 }
-
-/**
- * swap - this function swaps A with B
- * @A: this is the first argument that will be swapped
- * with B
- * @B: this will be swapped with A
- * Return: null
- */
-void swap(int *A, int *B)
-{
-	int temp = *A;
-
-	*A = *B;
-	*B = temp;
-}

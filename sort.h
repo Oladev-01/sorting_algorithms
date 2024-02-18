@@ -6,6 +6,7 @@
 void print_array(const int *array, size_t size);
 void swap(int *A, int *B);
 
+
 /**
  * struct listint_s - Doubly linked list node
  *
