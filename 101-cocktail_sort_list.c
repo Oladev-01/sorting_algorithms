@@ -8,12 +8,14 @@
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *start = *list, *end = NULL;
+	listint_t *start, *end = NULL;
 	int swapped = 1;
+
 
 	if (!list || !(*list) || !(*list)->next)
 		return;
 
+	start = *list;
 	while (swapped)
 	{
 		swapped = 0;
