@@ -46,9 +46,10 @@ int Lomuto(int *array, size_t low, size_t last, size_t size)
 	{
 
 		/*Swap items smaller than or equal to pivot to the lower side*/
-		if (array[cur_idx] <= pivot)
+		if (array[cur_idx] <= pivot && array[idx_pivot] > pivot)
 		{
 			swap(&array[idx_pivot], &array[cur_idx]);
+			print_array(array, size);
 		}
 
 		/*Ensure idx_pivot tracks the center of the partition*/
@@ -60,10 +61,10 @@ int Lomuto(int *array, size_t low, size_t last, size_t size)
 	if (array[idx_pivot] > pivot)
 	{
 		swap(&array[idx_pivot], &array[last]);
+		print_array(array, size);
 	}
 	else
 		idx_pivot = cur_idx;
-	print_array(array, size);
 
 	return (idx_pivot);
 }
