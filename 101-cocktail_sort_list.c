@@ -2,7 +2,8 @@
 #include "sort.h"
 
 /**
- * cocktail_sort_list - sorts a doubly linked list of integers using Cocktail Shaker Sort
+ * cocktail_sort_list - sorts a doubly linked
+ *  list of integers using Cocktail Shaker Sort
  * @list: pointer to the head of the list
  */
 void cocktail_sort_list(listint_t **list)
@@ -40,22 +41,34 @@ void cocktail_sort_list(listint_t **list)
 			break;
 
 		swapped = 0;
+		swapped = trav_back(list, &start, swapped);
+	}
+}
 
-		/* Traverse backward */
-		while (start->prev)
+/**
+ * trav_back - this function traverses the list from the last
+ * @start: the current index
+ * @list: the pointer to the start of the list
+ * @swapped: this checks if a swap has occurred
+ * Return: swapped
+ */
+int trav_back(listint_t **list, listint_t **start, int swapped)
+{
+	/* Traverse backward */
+	while ((*start)->prev)
+	{
+		if ((*start)->n < (*start)->prev->n)
 		{
-			if (start->n < start->prev->n)
-			{
-				swap_nodes(list, start->prev, start);
-				print_list(*list);
-				swapped = 1;
-			}
-			else
-			{
-				start = start->prev;
-			}
+			swap_nodes(list, (*start)->prev, (*start));
+			print_list(*list);
+			swapped = 1;
+		}
+		else
+		{
+			(*start) = (*start)->prev;
 		}
 	}
+	return (swapped);
 }
 
 /**
